@@ -11,46 +11,30 @@
 
 <body>
     <header>
-        <h1>Agende ou Participe de Partidas</h1>
+        <h1>LetsPlay</h1>
+            <!-- Adicione no índice -->
+        <nav>
+            <ul>
+                <li><a href="games.html">Jogos Registrados</a></li>
+                <li><a href="rooms.html">Lista de Salas</a></li>
+                <li><a href="agendar.html">Agendar Partidas</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Adicione no índice -->
-    <a href="games.html">Jogos Registrados</a>
-    <a href="rooms.html">Lista de Salas</a>
 
-    <section class="game-form">
-        <h2>Agende uma Partida</h2>
-        <form id="game-schedule-form">
-            <label for="game-name">Nome do Jogo:</label>
-            <input type="text" id="game-name" required>
 
-            <label for="date-time">Data e Hora:</label>
-            <input type="datetime-local" id="date-time" required>
-
-            <label for="player-count">Nº de Jogadores Necessários:</label>
-            <input type="number" id="player-count" required>
-
-            <label for="game-description">Descrição:</label>
-            <textarea id="game-description" required></textarea>
-
-            <button type="submit">Agendar Partida</button>
-        </form>
+    <section class="home-section">
+        <div class="left-content">
+            <h2>Cansado de não ter com quem jogar?</h2>
+            <p>Utilize a LetsPlay para encontrar a sua party ideal!</p>
+        </div>
+        <div class="right-content">
+            <!-- Adicione as imagens dos jogos disponíveis aqui -->
+            <img src="ImagemTeste.jpg" alt="Jogo 1">
+            <!-- Adicione mais imagens conforme necessário -->
+        </div>
     </section>
-
-    <section class="game-list">
-        <h2>Partidas Agendadas</h2>
-        <ul id="game-list">
-            <!-- Aqui serão exibidas as partidas agendadas dinamicamente -->
-        </ul>
-    </section>
-
-    <section class="user-schedule">
-        <h2>Partidas Inscritas</h2>
-        <ul id="user-schedule-list">
-            <!-- Aqui serão exibidas as partidas inscritas pelo usuário -->
-        </ul>
-    </section>
-
 
 </body>
 
