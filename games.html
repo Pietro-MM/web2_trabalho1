@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="games.js"></script>
+    <title>Jogos Registrados</title>
+</head>
+<body>
+    <header>
+        <h1>Jogos Registrados</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Página Inicial</a></li>
+            <li><a href="rooms.html">Lista de Salas</a></li>
+        </ul>
+    </nav>
+
+    <section class="registered-games">
+        <h2>Jogos Registrados</h2>
+        <ul id="registered-games-list">
+            <!-- Aqui serão exibidos os jogos registrados dinamicamente -->
+        </ul>
+        <button id="add-game-button">Adicionar Novo Jogo</button>
+    </section>
+
+    <section class="game-form" id="game-form">
+        <h2>Adicionar Novo Jogo</h2>
+        <form id="add-game-form">
+            <label for="new-game-name">Nome do Jogo:</label>
+            <input type="text" id="new-game-name" required>
+
+            <label for="new-game-summary">Breve Resumo:</label>
+            <textarea id="new-game-summary" required></textarea>
+
+            <button type="submit">Adicionar Jogo</button>
+        </form>
+    </section>
+</body>
+</html>

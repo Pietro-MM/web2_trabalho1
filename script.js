@@ -8,14 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const scheduledGames = JSON.parse(localStorage.getItem("scheduledGames")) || [];
         return scheduledGames;
     }
-
     // Função para recuperar as inscrições do usuário do Local Storage
     function getUserScheduledGames() {
         const userScheduledGames = JSON.parse(localStorage.getItem("userScheduledGames")) || [];
         return userScheduledGames;
     }
 
-    function limparStorage(){
+    function limparStorage() {
         localStorage.clear
     }
 

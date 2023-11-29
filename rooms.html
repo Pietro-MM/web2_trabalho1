@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="rooms.js"></script>
+    <title>Lista de Salas</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de Salas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Página Inicial</a></li>
+            <li><a href="games.html">Jogos Registrados</a></li>
+        </ul>
+    </nav>
+
+    <section class="room-list">
+        <h2>Lista de Salas</h2>
+        <ul id="room-list">
+            <!-- Aqui serão exibidas as salas dinamicamente -->
+        </ul>
+        <button id="create-room-button">Criar Nova Sala</button>
+    </section>
+
+    <section class="room-form" id="room-form">
+        <h2>Criar Nova Sala</h2>
+        <form id="create-room-form">
+            <label for="new-room-name">Nome da Sala:</label>
+            <input type="text" id="new-room-name" required>
+
+            <!-- Adicione mais campos conforme necessário para informações da sala -->
+
+            <button type="submit">Criar Sala</button>
+        </form>
+    </section>
+</body>
+</html>
