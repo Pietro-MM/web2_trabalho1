@@ -9,35 +9,54 @@
 </head>
 <body>
     <header>
-        <h1>Jogos Registrados</h1>
+        <h1>LetsPlay</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Página Inicial</a></li>
+                <li><a href="rooms.html">Lista de Salas</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="home.html">Página Inicial</a></li>
-            <li><a href="rooms.html">Lista de Salas</a></li>
-        </ul>
-    </nav>
-
     <section class="registered-games">
-        <h2>Jogos Registrados</h2>
+        <h3>Jogos Registrados</h3>
         <ul id="registered-games-list">
             <!-- Aqui serão exibidos os jogos registrados dinamicamente -->
         </ul>
-        <button id="add-game-button">Adicionar Novo Jogo</button>
+        <!-- Botão para abrir o formulário de adicionar novo jogo -->
+    <button id="add-game-button" onclick="showAddGameForm()">Adicionar Jogo</button>
     </section>
 
-    <section class="game-form" id="game-form">
-        <h2>Adicionar Novo Jogo</h2>
-        <form id="add-game-form">
-            <label for="new-game-name">Nome do Jogo:</label>
-            <input type="text" id="new-game-name" required>
 
-            <label for="new-game-summary">Breve Resumo:</label>
-            <textarea id="new-game-summary" required></textarea>
+    <!-- Formulário de adicionar novo jogo como pop-up -->
+    <div id="add-game-popup" class="popup-form" style="display: none;">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closeAddGameForm()">&times;</span>
+            <h2>Adicionar Novo Jogo</h2>
+            <form id="add-game-form">
+                <label for="new-game-name">Nome do Jogo:</label>
+                <input type="text" id="new-game-name" required><br>
 
-            <button type="submit">Adicionar Jogo</button>
-        </form>
-    </section>
+                <label for="new-game-summary">Breve Resumo:</label>
+                <textarea id="new-game-summary" required></textarea><br>
+
+                <button type="submit">Adicionar Jogo</button>
+            </form>
+        </div>
+    </div>
+
+
+     <!-- Adicione os scripts necessários para manipular o pop-up no final do corpo -->
+     <script>
+        // Função para exibir o pop-up de adicionar novo jogo
+        function showAddGameForm() {
+            document.getElementById("add-game-popup").style.display = "block";
+        }
+
+        // Função para fechar o pop-up de adicionar novo jogo
+        function closeAddGameForm() {
+            document.getElementById("add-game-popup").style.display = "none";
+        }
+    </script>
 </body>
 </html>

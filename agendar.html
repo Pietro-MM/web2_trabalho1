@@ -13,9 +13,13 @@
     <header>
         <h1>LetsPlay</h1>
             <!-- Adicione no índice -->
-        <a href="home.html">Página Inicial</a>
-        <a href="rooms.html">Lista de Salas</a>
-        <a href="games.html">Jogos Registrados</a>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Página Inicial</a></li>
+                    <li><a href="games.html">Jogos Registrados</a></li>
+                    <li><a href="rooms.html">Lista de Salas</a></li>
+                </ul>
+            </nav>
     </header>
 
 
@@ -23,8 +27,10 @@
     <section class="game-form">
         <h2>Agende uma Partida</h2>
         <form id="game-schedule-form">
-            <label for="game-name">Nome do Jogo:</label>
-            <input type="text" id="game-name" required>
+            <label for="game-name">Escolha um Jogo:</label>
+            <select id="game-select" required>
+                <!-- Options serão adicionadas dinamicamente pelo JavaScript -->
+            </select>
 
             <label for="date-time">Data e Hora:</label>
             <input type="datetime-local" id="date-time" required>

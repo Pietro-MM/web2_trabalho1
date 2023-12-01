@@ -19,7 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const listItem = document.createElement("li");
             listItem.innerHTML = `
                 <strong>${room.name}</strong>
-                <!-- Adicione mais informações conforme necessário -->
+                <button onclick="showRoomDetails('${room.name}')">Ver Detalhes</button>
+                <div id="${room.name}-details" style="display: none;">
+                    <p>Quantidade de Jogadores: ${room.maxPlayers}</p>
+                    <p>Data e Horário da Partida: ${room.gameDateTime}</p>
+                    <p>Nome do Jogo: ${room.gameName}</p>
+                </div>
             `;
 
             roomList.appendChild(listItem);
@@ -29,16 +34,27 @@ document.addEventListener("DOMContentLoaded", function () {
     // Chame a função para exibir a lista de salas quando a página for carregada
     displayRoomList();
 
+    function closeCreateRoomForm() {
+        createRoomForm.style.display = "none";
+    }
+
+
     // Evento para criar uma nova sala
     createRoomForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
         // Recupere os valores do formulário
-        const newRoomName = document.getElementById("new-room-name").value;
+        const newRoomName = document.getElementById("room-name").value;
+        const newMaxPlayers = document.getElementById("max-players").value;
+        const newGameDateTime = document.getElementById("game-date-time").value;
+        const newGameName = document.getElementById("game-name").value;
 
         // Crie um objeto para representar a nova sala
         const newRoom = {
             name: newRoomName,
+            maxPlayers: newMaxPlayers,
+            gameDateTime: newGameDateTime,
+            gameName: newGameName,
             // Adicione mais propriedades conforme necessário
         };
 
@@ -57,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Atualize a exibição da lista de salas
             displayRoomList();
+
+            // Feche o pop-up de criar nova sala
+            closeCreateRoomForm();
         }
 
         // Limpe o formulário

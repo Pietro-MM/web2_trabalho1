@@ -59,9 +59,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Atualize a exibição dos jogos registrados
             displayRegisteredGames();
+
+            // Feche o pop-up de adicionar novo jogo
+            closeAddGameForm();
         }
 
         // Limpe o formulário
         addGameForm.reset();
     });
+
+    // Função para exibir o pop-up de adicionar novo jogo
+    function showAddGameForm() {
+        document.getElementById("add-game-popup").style.display = "block";
+    }
+
+    // Função para fechar o pop-up de adicionar novo jogo
+    function closeAddGameForm() {
+        document.getElementById("add-game-popup").style.display = "none";
+    }
+
+    // Chame a função para exibir jogos registrados quando a página for carregada
+    displayRegisteredGames();
 });
