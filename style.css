@@ -2,31 +2,53 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background: linear-gradient(160deg, #494b4d 0%, #919191 100%);
     height: 100vh;
     margin: 0;
 }
 
-header {
-<<<<<<< Updated upstream
-=======
-    background-color: #393a3a;
->>>>>>> Stashed changes
-    color: white;
-    text-align: center;
-    padding: 1em 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-    font-weight: 200;
-
-    
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; /* Coloca a imagem atrás do conteúdo da página */
+    background: url('ImagemFundo.png') center/cover no-repeat; /* Ajuste o caminho da imagem conforme necessário */
+    opacity: 0.5; /* Define a opacidade da imagem de fundo */
 }
+
 
 .logo img {
     max-width: 25%;
     height: auto;
+}
+
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #23232e;
+    height: 8vh;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
 }
 
 
@@ -63,7 +85,7 @@ section {
 }
 
 button {
-    background-color: #2d2e2d;
+    background-color: #3b413b;
     color: white;
     padding: 10px;
     border: none;
@@ -71,7 +93,7 @@ button {
 }
 
 button:hover {
-    background-color: #687068;
+    background-color: #3a413b;
 }
 
 form {
@@ -125,21 +147,32 @@ li:hover {
     margin-bottom: 20px; /* Ajusta a margem inferior conforme necessário */
 }
 
+h1 {
+    color: #fff;
+    background-color: darkturquoise;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 5px; /* Reduz a margem inferior */
+}
+
 h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
+    color: white;
+    font-size: 30px; /* Reduz o tamanho da fonte */
+    margin: 5px 0; /* Reduz as margens superior e inferior */
     word-wrap: break-word;
 }
 
 h3 {
-    color: rgb(38, 38, 82);
+    color: rgb(42, 42, 44);
     font-size: 40px;
     margin-bottom: 10px;
     word-wrap: break-word;
 }
 
 p {
-    font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+    font-size: 16px; /* Reduz o tamanho da fonte */
+    margin: 5px 0; /* Reduz as margens superior e inferior */
 }
 
 .popup-form {
@@ -175,3 +208,14 @@ p {
 .close-btn:hover {
     color: #555;
 }
+
+a {
+    color: #635d5d;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  a:hover {
+    opacity: 0.7;
+  }
+
