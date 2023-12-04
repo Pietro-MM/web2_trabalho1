@@ -2,14 +2,40 @@ document.addEventListener("DOMContentLoaded", function () {
     const roomList = document.getElementById("room-list");
     const createRoomButton = document.getElementById("create-room-button");
     const createRoomForm = document.getElementById("create-room-form");
+    const joinedRoomsList = document.getElementById("joined-rooms-list");
+    const gameSelect = document.getElementById("game-name");
 
-    // Função para recuperar as salas do Local Storage
+    function populateGameSelect() {
+        const registeredGames = getRegisteredGames();
+
+        // Limpa as opções atuais
+        gameSelect.innerHTML = "";
+
+        // Adiciona uma opção padrão (opcional)
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.text = "Selecione um Jogo";
+        gameSelect.add(defaultOption);
+
+        // Adiciona as opções dos jogos
+        registeredGames.forEach((game) => {
+            const option = document.createElement("option");
+            option.value = game.name;
+            option.text = game.name;
+            gameSelect.add(option);
+        });
+    }
+
     function getRooms() {
         const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
         return rooms;
     }
 
-    // Função para exibir a lista de salas
+    function getRegisteredGames() {
+        const registeredGames = JSON.parse(localStorage.getItem("registeredGames")) || [];
+        return registeredGames;
+    }
+
     function displayRoomList() {
         const rooms = getRooms();
 
@@ -18,8 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
         rooms.forEach((room) => {
             const listItem = document.createElement("li");
             listItem.innerHTML = `
-                <strong>${room.name}</strong>
-                <button onclick="showRoomDetails('${room.name}')">Ver Detalhes</button>
+                <div>
+                    <strong>${room.name}</strong>
+                </div>
+                <div>
+                    <button onclick="showRoomDetails('${room.name}')">Ver Detalhes</button>
+                    <button onclick="joinRoom('${room.name}')">Juntar-se à Sala</button>
+                </div>
                 <div id="${room.name}-details" style="display: none;">
                     <p>Quantidade de Jogadores: ${room.maxPlayers}</p>
                     <p>Data e Horário da Partida: ${room.gameDateTime}</p>
@@ -31,54 +62,112 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Chame a função para exibir a lista de salas quando a página for carregada
-    displayRoomList();
+    function displayJoinedRoomsList() {
+        const joinedRooms = JSON.parse(localStorage.getItem("joinedRooms")) || [];
+
+        joinedRoomsList.innerHTML = "";
+
+        joinedRooms.forEach((roomName) => {
+            const room = getRooms().find(room => room.name === roomName);
+            if (room) {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <strong>${room.name}</strong>
+                    <button onclick="leaveRoom('${room.name}')">Sair da Sala</button>
+                    <div id="${room.name}-details" style="display: none;">
+                        <p>Quantidade de Jogadores: ${room.maxPlayers}</p>
+                        <p>Data e Horário da Partida: ${room.gameDateTime}</p>
+                        <p>Nome do Jogo: ${room.gameName}</p>
+                    </div>
+                `;
+                joinedRoomsList.appendChild(listItem);
+            }
+        });
+    }
 
     function closeCreateRoomForm() {
         createRoomForm.style.display = "none";
     }
 
-
-    // Evento para criar uma nova sala
     createRoomForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Recupere os valores do formulário
         const newRoomName = document.getElementById("room-name").value;
         const newMaxPlayers = document.getElementById("max-players").value;
         const newGameDateTime = document.getElementById("game-date-time").value;
-        const newGameName = document.getElementById("game-name").value;
+        const newGameName = gameSelect.value;
 
-        // Crie um objeto para representar a nova sala
         const newRoom = {
             name: newRoomName,
             maxPlayers: newMaxPlayers,
             gameDateTime: newGameDateTime,
             gameName: newGameName,
-            // Adicione mais propriedades conforme necessário
         };
 
-        // Recupere as salas atuais do Local Storage
         const rooms = getRooms();
 
-        // Verifique se a sala já existe
         if (rooms.some(existingRoom => existingRoom.name === newRoom.name)) {
             alert("Esta sala já existe!");
         } else {
-            // Adicione a nova sala à lista de salas
             rooms.push(newRoom);
-
-            // Atualize o Local Storage com as novas salas
             localStorage.setItem("rooms", JSON.stringify(rooms));
-
-            // Atualize a exibição da lista de salas
             displayRoomList();
-
-            // Feche o pop-up de criar nova sala
-            closeCreateRoomForm();
+            alert("Sala criada com sucesso!");
         }
 
-        // Limpe o formulário
         createRoomForm.reset();
     });
+
+    window.joinRoom = function(roomName) {
+        const joinedRooms = JSON.parse(localStorage.getItem("joinedRooms")) || [];
+
+        if (joinedRooms.includes(roomName)) {
+            alert("Você já está nesta sala!");
+        } else {
+            joinedRooms.push(roomName);
+            localStorage.setItem("joinedRooms", JSON.stringify(joinedRooms));
+            displayJoinedRoomsList();
+        }
+    };
+
+    window.leaveRoom = function(roomName) {
+        let joinedRooms = JSON.parse(localStorage.getItem("joinedRooms")) || [];
+
+        joinedRooms = joinedRooms.filter(room => room !== roomName);
+        localStorage.setItem("joinedRooms", JSON.stringify(joinedRooms));
+        displayJoinedRoomsList();
+    };
+
+    window.showRoomDetails = function (roomName, isJoinedRoom) {
+        const detailsDiv = document.getElementById(`${roomName}-details`);
+        const rooms = isJoinedRoom ? getJoinedRooms() : getRooms();
+        const room = rooms.find((room) => room.name === roomName);
+
+        if (detailsDiv && room) {
+            detailsDiv.innerHTML = `
+                <p>Quantidade de Jogadores: ${room.maxPlayers}</p>
+                <p>Data e Horário da Partida: ${room.gameDateTime}</p>
+                <p>Nome do Jogo: ${room.gameName}</p>
+            `;
+
+            if (isJoinedRoom) {
+                const leaveButton = document.createElement("button");
+                leaveButton.textContent = "Sair da Sala";
+                leaveButton.onclick = function () {
+                    leaveRoom(roomName);
+                    displayJoinedRoomsList();
+                };
+                detailsDiv.appendChild(leaveButton);
+            }
+
+            detailsDiv.style.display = detailsDiv.style.display === "none" ? "block" : "none";
+        }
+    };
+
+    // Chame a função para exibir a lista de salas quando a página for carregada
+    displayRoomList();
+    // Chame a função para exibir a lista de "Minhas Salas" quando a página for carregada
+    displayJoinedRoomsList();
+    // Chame a função para popular a lista de jogos quando a página for carregada
+    populateGameSelect();
 });

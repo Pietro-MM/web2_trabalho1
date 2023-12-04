@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="rooms.js"></script>
-    <title>LetsPlay</title>
+    <title>Salas Criadas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
         <nav>
-            <a class ="logo">LetsPlay</a>
+            <a class ="logo">LetsPlay!</a>
 
 
         <ul class="nav-list">
@@ -25,12 +26,21 @@
 </body>
 
     <section class="room-list">
-        <h2>Lista de Salas</h2>
+        <h3>Lista de Salas</h3>
         <ul id="room-list">
             <!-- Aqui serão exibidas as salas dinamicamente -->
         </ul>
         <button id="create-room-button" onclick="showCreateRoomForm()">Criar Nova Sala</button>
     </section>
+
+    <!-- Adicione esta seção na página onde deseja exibir "Minhas Salas" -->
+    <section class="joined-rooms">
+        <h3>Minhas Salas</h3>
+        <ul id="joined-rooms-list">
+            <!-- Aqui serão exibidas as salas às quais o usuário se juntou -->
+        </ul>
+    </section>
+
 
         <!-- Formulário oculto inicialmente -->
     <div id="create-room-form" class="popup-form">
@@ -39,7 +49,7 @@
             <h2>Criar Nova Sala</h2>
             <form id="room-form">
                 <label for="game-name">Nome do Jogo:</label>
-                <input type="text" id="game-name" name="gameName" required><br>
+                <select id="game-name" name="gameName" required></select><br>
     
                 <label for="max-players">Quantidade de Pessoas:</label>
                 <input type="number" id="max-players" name="maxPlayers" required><br>

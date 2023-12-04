@@ -78,6 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("add-game-popup").style.display = "none";
     }
 
-    // Chame a função para exibir jogos registrados quando a página for carregada
+    // Chame a função para exibir jogos registrados também após adicionar um novo jogo
     displayRegisteredGames();
 });

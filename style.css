@@ -29,6 +29,8 @@ body::before {
     font-size: 24px;
     text-transform: uppercase;
     letter-spacing: 4px;
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -48,7 +50,7 @@ nav {
 
 .nav-list li {
     letter-spacing: 3px;
-    margin-left: 32px;
+    margin-left: 20px;
 }
 
 
@@ -163,7 +165,7 @@ h2 {
 }
 
 h3 {
-    color: rgb(42, 42, 44);
+    color: #333;
     font-size: 40px;
     margin-bottom: 10px;
     word-wrap: break-word;
@@ -175,12 +177,13 @@ p {
 }
 
 .popup-form {
-    display: none;
+    display: grid;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    gap: 10px;
     background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
 }
 
@@ -193,6 +196,38 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     position: relative;
+}
+
+.popup-content h2 {
+    color: #333;
+}
+
+.popup-content label {
+    font-weight: bold;
+}
+
+.popup-content button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-content input[type="submit"] {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-content input[type="submit"]:hover {
+    background-color: #3a413b;
+}
+
+.popup-content button:hover {
+    background-color: #3a413b;
 }
 
 .close-btn {
@@ -219,58 +254,6 @@ a {
   }
 
 
-  .post-it {
-    width:250px;
- height:240px;
- position:relative;
- background:#ffa;
- overflow:hidden;
- margin:30px auto;
- padding:20px;
- border-radius:0 0 0 30px/45px;
- box-shadow:
-   inset 0 -40px 40px rgba(0,0,0,0.2),
-   inset 0 25px 10px rgba(0,0,0,0.2),
-   0 5px 6px 5px rgba(0,0,0,0.2);
- font-family: 'Permanent Marker', cursive;
- line-height:1.7em;
- font-size:19px;
- -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
-
- color:#130d6b;
-}
-
-.post-it li {
-    cursor:pointer; 
-}
-
-.post-it:before {
-    content:"";
- display:block;
- position:absolute;
- width:20px;
- height:25px;
- background:#ffa;
- box-shadow:
-   3px -2px 10px rgba(0,0,0,0.2),
-   inset 15px -15px 15px rgba(0,0,0,0.3);
- left:0;
- bottom:0;
- z-index:2;
- transform:skewX(25deg);
-}
-
-.post-it:after {
-    content:"";
- display:block;
- position:absolute;
- width:75%;
- height:20px; 
- border-top:3px solid #130d6b;
- border-radius: 50% ;
- bottom:0px;
- left:10%;
-}
 
 .done {
     text-decoration:line-through; 
@@ -288,4 +271,108 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.home-section {
+    display: flex;
+    flex-direction: column; /* Mudança para empilhar os elementos verticalmente */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    padding: 20px;
+    color: white;
+    height: auto; /* Remova a altura fixa para que ela se ajuste automaticamente ao conteúdo */
+}
+
+.left-content {
+    max-width: 35%;
+}
+
+.right-content {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Move a imagem para a parte inferior */
+    align-items: center; /* Centraliza a imagem horizontalmente */
+}
+
+.content-box {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #2c2c2c; /* Cor de fundo */
+    border: 1px solid #444; /* Borda */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+.content-box p {
+    margin: 0; /* Remover margens internas do parágrafo */
+    font-size: 16px;
+    color: #fff; /* Cor do texto */
+    text-align: center;
+}
+
+header {
+    background: #23232e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+section.registered-games {
+    text-align: center;
+    margin: 20px;
+}
+
+ul#registered-games-list {
+    list-style: none;
+    padding: 0;
+}
+
+section.room-list {
+    text-align: center;
+    margin: 20px;
+}
+
+ul#room-list {
+    list-style: none;
+    padding: 0;
+}
+
+section.joined-rooms {
+    text-align: center;
+    margin: 20px;
+}
+
+ul#joined-rooms-list {
+    list-style: none;
+    padding: 0;
+}
+
+button#add-game-button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#add-game-button:hover {
+    background-color: #3a413b;
+}
+
+ul#room-list {
+    list-style: none;
+    padding: 0;
+}
+
+button#create-room-button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#create-room-button:hover {
+    background-color: #3a413b;
 }
