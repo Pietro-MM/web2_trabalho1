@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         createRoomForm.style.display = "none";
     }
 
+    closeCreateRoomForm();
     createRoomForm.addEventListener("submit", function (e) {
         e.preventDefault();
 

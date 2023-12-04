@@ -88,8 +88,10 @@ button {
     background-color: #3b413b;
     color: white;
     padding: 10px;
-    border: none;
-    cursor: pointer;
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor ao passar por cima */
+    transition: background-color 0.3s ease; /* Efeito de transição suave na cor de fundo */
 }
 
 button:hover {
@@ -151,7 +153,7 @@ h2 {
 }
 
 h3 {
-    color: black;
+    color: white;
     font-size: 40px;
     margin-bottom: 10px;
     word-wrap: break-word;
