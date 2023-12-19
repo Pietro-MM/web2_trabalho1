@@ -80,9 +80,6 @@ nav a:hover {
     color: black;
 }
 
-section {
-    margin: 20px;
-}
 
 button {
     background-color: #3b413b;
@@ -101,10 +98,6 @@ button:hover {
 form {
     display: grid;
     gap: 10px;
-}
-
-label {
-    font-weight: bold;
 }
 
 ul {
@@ -135,13 +128,15 @@ li:hover {
 }
 
 h1 {
-    color: #fff;
+    font-size: 48px;
+    color: #333;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
     margin-bottom: 5px;
     /* Reduz a margem inferior */
 }
+
 
 h2 {
     color: white;
@@ -249,13 +244,6 @@ a:hover {
     text-decoration: line-through;
 }
 
-h1 {
-    font-size: 48px;
-    /* Ajuste o tamanho conforme necessário */
-    color: #333;
-    font-family: 'YourBrandFont', 'Arial', sans-serif;
-    /* Substitua 'YourBrandFont' pela fonte da sua marca */
-}
 
 .centered-content {
     text-align: center;
@@ -279,16 +267,6 @@ h1 {
 
 .left-content {
     max-width: 35%;
-}
-
-.right-content {
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    /* Move a imagem para a parte inferior */
-    align-items: center;
-    /* Centraliza a imagem horizontalmente */
 }
 
 .content-box {

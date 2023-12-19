@@ -90,6 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     closeCreateRoomForm();
+
+    
     createRoomForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
