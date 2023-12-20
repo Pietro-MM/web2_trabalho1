@@ -1,33 +1,98 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(160deg, #494b4d 0%, #919191 100%);
+    height: 100vh;
+    margin: 0;
 }
 
-header {
-    background-color: #007acc;
-    color: #fff;
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    /* Coloca a imagem atrás do conteúdo da página */
+    background: url('ImagemFundo.png') center/cover no-repeat;
+    /* Ajuste o caminho da imagem conforme necessário */
+    opacity: 0.5;
+    /* Define a opacidade da imagem de fundo */
+}
+
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: white;
+    text-decoration: none;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #23232e;
+    height: 8vh;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    letter-spacing: 3px;
+    margin-left: 20px;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0s;
+    overflow: hidden;
+    margin-left: 30px;
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    display: contents;
+    color: white;
     text-align: center;
-    padding: 1rem 0;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: transparent;
+    /* Removendo o fundo */
+    transition: color 0.3s;
+    /* Adicionando uma transição suave para a cor do texto */
 }
 
-h1 {
-    font-size: 2rem;
+nav a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-.game-form, .game-list {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor ao passar por cima */
+    transition: background-color 0.3s ease; /* Efeito de transição suave na cor de fundo */
 }
 
-h2 {
-    font-size: 1.5rem;
+button:hover {
+    background-color: #3a413b;
 }
 
 form {
@@ -35,28 +100,260 @@ form {
     gap: 10px;
 }
 
-label {
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+li:hover {
+    background-color: #f5f5f5;
+}
+
+
+.home-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+}
+
+.left-content {
+    max-width: 35%;
+}
+
+h1 {
+    font-size: 48px;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    /* Reduz a margem inferior */
+}
+
+
+h2 {
+    color: white;
+    font-size: 30px;
+    /* Reduz o tamanho da fonte */
+    margin: 5px 0;
+    /* Reduz as margens superior e inferior */
+    word-wrap: break-word;
+}
+
+h3 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+p {
+    font-size: 18px;
+    /* Ajuste o tamanho conforme necessário */
+    color: black;
+}
+
+.popup-form {
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo escuro semi-transparente */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+}
+
+.popup-content h2 {
+    color: #333;
+}
+
+.popup-content label {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="datetime-local"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-button {
-    background-color: #007acc;
-    color: #fff;
+.popup-content button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
     border: none;
-    padding: 0.5rem 1rem;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #005a99;
+.popup-content input[type="submit"] {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-content input[type="submit"]:hover {
+    background-color: #3a413b;
+}
+
+.popup-content button:hover {
+    background-color: #3a413b;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover {
+    color: #555;
+}
+
+a {
+    color: #635d5d;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+
+
+.done {
+    text-decoration: line-through;
+}
+
+
+.centered-content {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home-section {
+    display: flex;
+    flex-direction: column;
+    /* Mudança para empilhar os elementos verticalmente */
+    align-items: center;
+    /* Centraliza os elementos horizontalmente */
+    padding: 20px;
+    color: white;
+    height: auto;
+    /* Remova a altura fixa para que ela se ajuste automaticamente ao conteúdo */
+}
+
+.left-content {
+    max-width: 35%;
+}
+
+.content-box {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #2c2c2c;
+    /* Cor de fundo */
+    border: 1px solid #444;
+    /* Borda */
+    border-radius: 5px;
+    /* Borda arredondada */
+}
+
+.content-box p {
+    margin: 0;
+    /* Remover margens internas do parágrafo */
+    font-size: 16px;
+    color: #fff;
+    /* Cor do texto */
+    text-align: center;
+}
+
+header {
+    background: #23232e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+section.registered-games {
+    text-align: center;
+    margin: 20px;
+}
+
+ul#registered-games-list {
+    list-style: none;
+    padding: 0;
+    color: black;
+}
+
+section.room-list {
+    text-align: center;
+    margin: 20px;
+}
+
+ul#room-list {
+    list-style: none;
+    padding: 0;
+}
+
+section.joined-rooms {
+    text-align: center;
+    margin: 20px;
+}
+
+ul#joined-rooms-list {
+    list-style: none;
+    padding: 0;
+}
+
+button#add-game-button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#add-game-button:hover {
+    background-color: #3a413b;
+}
+
+ul#room-list {
+    list-style: none;
+    padding: 0;
+}
+
+button#create-room-button {
+    background-color: #3b413b;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#create-room-button:hover {
+    background-color: #3a413b;
 }
